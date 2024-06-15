@@ -8,4 +8,9 @@
   html {
     font-family: "Ubuntu", system-ui, sans-serif;
   }
+
+  body {
+    min-height: 100dvh;
+    @apply bg-neutral-Magnolia;
+  }
 }
