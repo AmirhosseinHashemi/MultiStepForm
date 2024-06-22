@@ -1,20 +1,26 @@
 import { useState } from "react";
+import {
+  DEFAULT_SELECTED_PLAN,
+  DEFAULT_PAYMENT_METHOD,
+  PLANS,
+} from "../utils/config";
+import PlanItem from "./PlanItem";
 
 function Plan() {
-  const [selectedPlan, setSelectedPlan] = useState("arcade");
-  const [paidOption, setPaidOption] = useState("monthly");
+  const [selectedPlan, setSelectedPlan] = useState(DEFAULT_SELECTED_PLAN);
+  const [paymentMethod, setPaymentMethod] = useState(DEFAULT_PAYMENT_METHOD);
 
-  function handleSwitch() {
-    if (paidOption === "monthly") setPaidOption("yearly");
-    if (paidOption === "yearly") setPaidOption("monthly");
+  function handleSwitchBtn() {
+    if (paymentMethod === "monthly") setPaymentMethod("yearly");
+    if (paymentMethod === "yearly") setPaymentMethod("monthly");
   }
 
-  function handlePlan(planName) {
+  function handleSelectedPlan(planName) {
     setSelectedPlan(planName);
   }
 
   return (
-    <section className="mt-[-72px] rounded-lg bg-neutral-white px-6 py-8 shadow-2xl">
+    <section className="mt-[-72px] rounded-lg bg-neutral-white px-6 py-8 shadow-xl">
       <h2 className="text-2xl font-bold text-primary-blue-1">
         Select your plan
       </h2>
@@ -22,66 +28,28 @@ function Plan() {
         You have the option of monthly or yearly billing.
       </p>
 
-      <div
-        onClick={() => handlePlan("arcade")}
-        className={`mt-3 flex cursor-pointer gap-2 rounded-md border p-3 align-top ${selectedPlan === "arcade" ? "border-primary-blue-2 bg-neutral-Magnolia" : "border-neutral-gray-2"}`}
-      >
-        <img className="h-10 w-10" src="images/icon-arcade.svg" alt="" />
-        <div>
-          <h3 className="text-sm font-medium text-primary-blue-1">Arcade</h3>
-          <p className="text-sm font-normal text-neutral-gray-1">$9/mo</p>
-          {paidOption === "yearly" && (
-            <p className="text-sm font-normal text-primary-blue-1">
-              2 months free
-            </p>
-          )}
-        </div>
-      </div>
-
-      <div
-        onClick={() => handlePlan("advanced")}
-        className={`mt-3 flex cursor-pointer gap-2 rounded-md border p-3 align-top ${selectedPlan === "advanced" ? "border-primary-blue-2 bg-neutral-Magnolia" : "border-neutral-gray-2"}`}
-      >
-        <img className="h-10 w-10" src="images/icon-advanced.svg" alt="" />
-        <div>
-          <h3 className="text-sm font-medium text-primary-blue-1">Advanced</h3>
-          <p className="text-sm font-normal text-neutral-gray-1">$12/mo</p>
-          {paidOption === "yearly" && (
-            <p className="text-sm font-normal text-primary-blue-1">
-              2 months free
-            </p>
-          )}
-        </div>
-      </div>
-
-      <div
-        onClick={() => handlePlan("pro")}
-        className={`mt-3 flex cursor-pointer gap-2 rounded-md border p-3 align-top ${selectedPlan === "pro" ? "border-primary-blue-2 bg-neutral-Magnolia" : "border-neutral-gray-2"}`}
-      >
-        <img className="h-10 w-10" src="images/icon-pro.svg" alt="" />
-        <div>
-          <h3 className="text-sm font-medium text-primary-blue-1">Pro</h3>
-          <p className="text-sm font-normal text-neutral-gray-1">$15/mo</p>
-          {paidOption === "yearly" && (
-            <p className="text-sm font-normal text-primary-blue-1">
-              2 months free
-            </p>
-          )}
-        </div>
-      </div>
+      {PLANS.map((plan) => (
+        <PlanItem
+          key={plan.id}
+          planInfo={plan}
+          isActive={selectedPlan === plan.name}
+          handleSelectedPlan={handleSelectedPlan}
+          paymentMethod={paymentMethod}
+        />
+      ))}
 
       <div className="mt-4 flex items-center justify-center gap-5 rounded-md bg-neutral-Alabaster py-3">
         <p
-          className={`text-sm font-bold ${paidOption === "monthly" ? "text-primary-blue-1" : "text-primary-blue-3"}`}
+          className={`text-sm font-bold ${paymentMethod === "monthly" ? "text-primary-blue-1" : "text-primary-blue-3"}`}
         >
           Monthly
         </p>
         <button
-          onClick={handleSwitch}
-          className={`relative h-5 w-10 rounded-3xl bg-primary-blue-1 after:absolute after:top-1/2 after:h-3 after:w-3 after:-translate-y-1/2 after:rounded-full after:bg-neutral-Alabaster after:transition-all ${paidOption === "monthly" ? "after:left-1" : "after:left-6"}`}
+          onClick={handleSwitchBtn}
+          className={`relative h-5 w-10 rounded-3xl bg-primary-blue-1 after:absolute after:top-1/2 after:h-3 after:w-3 after:-translate-y-1/2 after:rounded-full after:bg-neutral-Alabaster after:transition-all ${paymentMethod === "monthly" ? "after:left-1" : "after:left-6"}`}
         ></button>
         <p
-          className={`text-sm font-bold ${paidOption === "yearly" ? "text-primary-blue-1" : "text-primary-blue-3"}`}
+          className={`text-sm font-bold ${paymentMethod === "yearly" ? "text-primary-blue-1" : "text-primary-blue-3"}`}
         >
           Yearly
         </p>
