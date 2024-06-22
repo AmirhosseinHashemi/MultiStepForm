@@ -4,7 +4,7 @@ import Main from "./Main";
 
 function Layout({ children }) {
   return (
-    <div className="mx-auto max-w-[375px]">
+    <div className="mx-auto max-w-[375px] pb-24">
       <FormLevel />
       <Main>{children}</Main>
       <Footer />
