@@ -1,5 +1,19 @@
-function Main({ children }) {
-  return <main className="px-4">{children}</main>;
+import useFormContext from "../hooks/useFormContext";
+
+import AddOns from "./AddOns";
+import PersonalInfoForm from "./PersonalInfoForm";
+import Plan from "./Plan";
+
+function Main() {
+  const { level } = useFormContext();
+
+  return (
+    <main className="px-4">
+      {level === 1 && <PersonalInfoForm />}
+      {level === 2 && <Plan />}
+      {level === 3 && <AddOns />}
+    </main>
+  );
 }
 
 export default Main;

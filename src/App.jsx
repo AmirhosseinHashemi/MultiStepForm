@@ -1,12 +1,14 @@
 import Layout from "./components/Layout";
-// import PersonalInfoForm from "./components/PersonalInfoForm";
-import Plan from "./components/Plan";
+import FormLevel from "./components/FormLevel";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <Layout>
-      {/* <PersonalInfoForm /> */}
-      <Plan />
+      <FormLevel />
+      <Main />
+      <Footer />
     </Layout>
   );
 }
