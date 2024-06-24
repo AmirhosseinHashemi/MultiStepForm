@@ -1,22 +1,21 @@
-import { useState } from "react";
-import {
-  DEFAULT_SELECTED_PLAN,
-  DEFAULT_PAYMENT_METHOD,
-  PLANS,
-} from "../utils/config";
+import { PLANS } from "../utils/config";
+import useFormContext from "../hooks/useFormContext";
+import useFormDispatchContext from "../hooks/useFormDispatchContext";
 import PlanItem from "./PlanItem";
 
 function Plan() {
-  const [selectedPlan, setSelectedPlan] = useState(DEFAULT_SELECTED_PLAN);
-  const [paymentMethod, setPaymentMethod] = useState(DEFAULT_PAYMENT_METHOD);
+  const { paymentMethod, selectedPlan } = useFormContext();
+  const dispatch = useFormDispatchContext();
 
   function handleSwitchBtn() {
-    if (paymentMethod === "monthly") setPaymentMethod("yearly");
-    if (paymentMethod === "yearly") setPaymentMethod("monthly");
+    if (paymentMethod === "monthly")
+      dispatch({ type: "set_payment_method", payload: "yearly" });
+    if (paymentMethod === "yearly")
+      dispatch({ type: "set_payment_method", payload: "monthly" });
   }
 
   function handleSelectedPlan(planName) {
-    setSelectedPlan(planName);
+    dispatch({ type: "select_plan", payload: planName });
   }
 
   return (
