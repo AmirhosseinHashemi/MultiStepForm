@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import useFormDispatchContext from "../hooks/useFormDispatchContext";
 
 function PersonalInfoForm() {
   const {
@@ -6,9 +7,10 @@ function PersonalInfoForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const dispatch = useFormDispatchContext();
 
   function submit(data) {
-    console.log(data);
+    dispatch({ type: "add_to_personal_info", payload: data });
   }
 
   return (
@@ -105,9 +107,6 @@ function PersonalInfoForm() {
               {errors.phone.message}
             </p>
           )}
-          <button hidden={true} type="submit">
-            Submit
-          </button>
         </div>
       </form>
     </section>
