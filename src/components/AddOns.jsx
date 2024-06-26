@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { ADD_ONS } from "../utils/config";
 import useFormDispatchContext from "../hooks/useFormDispatchContext";
 import AddOnsItem from "./AddOnsItem";
+import Button from "./Button";
 
 function AddOns() {
   const { register, handleSubmit } = useForm();
@@ -10,6 +11,7 @@ function AddOns() {
 
   function submitForm(data) {
     dispatch({ type: "add_ons", payload: data });
+    dispatch({ type: "step/next" });
   }
 
   return (
@@ -23,6 +25,10 @@ function AddOns() {
         {ADD_ONS.map((option) => (
           <AddOnsItem key={option.id} option={option} register={register} />
         ))}
+
+        <Button type="submit" model="next">
+          Next Step
+        </Button>
       </form>
     </section>
   );

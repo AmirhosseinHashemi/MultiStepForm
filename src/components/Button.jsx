@@ -1,6 +1,6 @@
 import useFormDispatchContext from "../hooks/useFormDispatchContext";
 
-function Button({ children, model }) {
+function Button({ children, model, type = "button", onClick }) {
   const dispatch = useFormDispatchContext();
 
   const btnModel = {
@@ -12,6 +12,7 @@ function Button({ children, model }) {
   if (model === "back")
     return (
       <button
+        type={type}
         onClick={() => dispatch({ type: "step/prev" })}
         className={`rounded px-4 py-2 text-sm font-medium capitalize tracking-wide ${btnModel[model]}`}
       >
@@ -22,8 +23,9 @@ function Button({ children, model }) {
   if (model === "next")
     return (
       <button
-        onClick={() => dispatch({ type: "step/next" })}
-        className={`rounded px-4 py-2 text-sm font-medium capitalize tracking-wide ${btnModel[model]}`}
+        onClick={onClick}
+        type={type}
+        className={`fixed bottom-[14px] right-4 z-10 rounded px-4 py-2 text-sm font-medium capitalize tracking-wide ${btnModel[model]}`}
       >
         {children}
       </button>
@@ -32,6 +34,7 @@ function Button({ children, model }) {
   if (model === "confirm")
     return (
       <button
+        type={type}
         className={`rounded px-4 py-2 text-sm font-medium capitalize tracking-wide ${btnModel[model]}`}
       >
         {children}

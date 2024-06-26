@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import useFormDispatchContext from "../hooks/useFormDispatchContext";
+import Button from "./Button";
 
 function PersonalInfoForm() {
   const {
@@ -11,6 +12,7 @@ function PersonalInfoForm() {
 
   function submit(data) {
     dispatch({ type: "add_to_personal_info", payload: data });
+    dispatch({ type: "step/next" });
   }
 
   return (
@@ -108,6 +110,10 @@ function PersonalInfoForm() {
             </p>
           )}
         </div>
+
+        <Button type="submit" model="next">
+          Next Step
+        </Button>
       </form>
     </section>
   );

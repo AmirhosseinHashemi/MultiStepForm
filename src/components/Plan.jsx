@@ -2,6 +2,7 @@ import { PLANS } from "../utils/config";
 import useFormContext from "../hooks/useFormContext";
 import useFormDispatchContext from "../hooks/useFormDispatchContext";
 import PlanItem from "./PlanItem";
+import Button from "./Button";
 
 function Plan() {
   const { paymentMethod, selectedPlan } = useFormContext();
@@ -53,6 +54,10 @@ function Plan() {
           Yearly
         </p>
       </div>
+
+      <Button onClick={() => dispatch({ type: "step/next" })} model="next">
+        Next Step
+      </Button>
     </section>
   );
 }
