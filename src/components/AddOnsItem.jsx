@@ -11,9 +11,7 @@ function AddOnsItem({ option, register }) {
     >
       <label htmlFor={name} className="h-5 w-5">
         <input
-          className={
-            "size-full appearance-none rounded border border-neutral-gray-2 bg-transparent bg-[url('/images/icon-checkmark.svg')] checked:border-none checked:bg-primary-blue-2 checked:bg-center checked:bg-no-repeat"
-          }
+          className="size-full appearance-none rounded border border-neutral-gray-2 bg-transparent bg-[url('/images/icon-checkmark.svg')] checked:border-none checked:bg-primary-blue-2 checked:bg-center checked:bg-no-repeat"
           type="checkbox"
           name={name}
           id={name}
