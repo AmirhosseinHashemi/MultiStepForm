@@ -9,7 +9,7 @@ const initialState = {
   personalInfo: {},
   selectedPlan: DEFAULT_SELECTED_PLAN,
   paymentMethod: DEFAULT_PAYMENT_METHOD,
-  addOns: {},
+  addOns: [],
 };
 
 function reducer(state, action) {

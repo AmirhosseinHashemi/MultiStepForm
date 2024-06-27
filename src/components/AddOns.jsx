@@ -10,7 +10,10 @@ function AddOns() {
   const dispatch = useFormDispatchContext();
 
   function submitForm(data) {
-    dispatch({ type: "add_ons", payload: data });
+    const filteredData = Object.entries(data).filter((arr) =>
+      arr.includes("true"),
+    );
+    dispatch({ type: "add_ons", payload: filteredData });
     dispatch({ type: "step/next" });
   }
 
