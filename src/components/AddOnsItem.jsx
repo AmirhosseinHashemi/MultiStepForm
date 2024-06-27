@@ -1,8 +1,12 @@
 import { useState } from "react";
+import useFormContext from "../hooks/useFormContext";
 
 function AddOnsItem({ option, register }) {
+  const { paymentMethod } = useFormContext();
   const [isActive, setIsActive] = useState(true);
-  const { name, id, description } = option;
+  const { name, id, description, price } = option;
+
+  const paymentMethodAbb = paymentMethod === "yearly" ? "yr" : "mo";
 
   return (
     <div
@@ -27,7 +31,9 @@ function AddOnsItem({ option, register }) {
         </h3>
         <p className="text-xs font-normal text-neutral-gray-1">{description}</p>
       </div>
-      <p className="text-xs font-medium text-primary-blue-2">+$1/mon</p>
+      <p className="text-xs font-medium text-primary-blue-2">
+        +${price[paymentMethod]}/{paymentMethodAbb}
+      </p>
     </div>
   );
 }
