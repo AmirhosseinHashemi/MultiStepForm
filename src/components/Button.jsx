@@ -35,7 +35,7 @@ function Button({ children, model, type = "button", onClick }) {
     return (
       <button
         type={type}
-        className={`rounded px-4 py-2 text-sm font-medium capitalize tracking-wide ${btnModel[model]}`}
+        className={`fixed bottom-[14px] right-4 z-10 rounded px-4 py-2 text-sm font-medium capitalize tracking-wide ${btnModel[model]}`}
       >
         {children}
       </button>
