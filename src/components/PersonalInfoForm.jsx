@@ -16,7 +16,7 @@ function PersonalInfoForm() {
   }
 
   return (
-    <section className="mt-[-72px] rounded-lg bg-neutral-white px-6 py-8">
+    <section className="mt-[-72px] rounded-lg bg-neutral-white px-6 py-8 shadow-xl">
       <h2 className="text-2xl font-bold text-primary-blue-1">Personal info</h2>
       <p className="mt-2 text-[16px] font-normal text-neutral-gray-1">
         Please provide your name, email, address, and phone number.
