@@ -34,6 +34,7 @@ function Button({ children, model, type = "button", onClick }) {
   if (model === "confirm")
     return (
       <button
+        onClick={() => dispatch({ type: "step/next" })}
         type={type}
         className={`fixed bottom-[14px] right-4 z-10 rounded px-4 py-2 text-sm font-medium capitalize tracking-wide ${btnModel[model]}`}
       >
